@@ -1,0 +1,11 @@
+const campanha = window.CAMPANHA || { valorArrecadado: 0, meta: 10000 };
+const arrecadado = Math.max(Number(campanha.valorArrecadado) || 0, 0);
+const meta = Math.max(Number(campanha.meta) || 10000, 1);
+const percentual = Math.min((arrecadado / meta) * 100, 100);
+const moeda = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
+document.querySelector('#raised').textContent = moeda.format(arrecadado);
+document.querySelector('#percentage').textContent = `${percentual.toFixed(1).replace('.', ',')}% da meta`;
+document.querySelector('#remaining').textContent = `Faltam ${moeda.format(Math.max(meta - arrecadado, 0))}`;
+document.querySelector('#goal').textContent = moeda.format(meta);
+document.querySelector('#progress-bar').style.width = `${percentual}%`;
+document.querySelector('#progress').setAttribute('aria-valuenow', percentual.toFixed(1));

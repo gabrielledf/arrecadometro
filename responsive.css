@@ -1,0 +1,87 @@
+/* Prevent long content from escaping the hero grid. */
+.hero__inner {
+  grid-template-columns: minmax(0, 1.02fr) minmax(0, .98fr);
+}
+
+.hero__copy,
+.meter-card {
+  min-width: 0;
+}
+
+h1 {
+  font-size: clamp(3rem, 7.2vw, 6.2rem);
+  line-height: .9;
+  white-space: nowrap;
+}
+
+.meter-card > strong {
+  max-width: 100%;
+  font-size: clamp(2.35rem, 5.2vw, 4.8rem);
+  overflow-wrap: anywhere;
+}
+
+/* Use one column before the title and meter become crowded. */
+@media (max-width: 1100px) {
+  .hero {
+    min-height: auto;
+  }
+
+  .hero__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .hero__copy {
+    margin: auto;
+    text-align: center;
+  }
+
+  .meter-card {
+    max-width: 620px;
+    margin: auto;
+  }
+
+  .hero h1 {
+    font-size: clamp(3rem, 8vw, 4.5rem);
+  }
+}
+
+@media (min-width: 1101px) {
+  .hero__inner {
+    grid-template-columns: minmax(0, 1.3fr) minmax(430px, 1fr);
+    gap: clamp(2rem, 3.5vw, 3rem);
+    align-items: end;
+  }
+
+  .hero h1 {
+    font-size: clamp(3.6rem, 5vw, 4.5rem);
+  }
+}
+
+@media (max-width: 560px) {
+  .brand {
+    font-size: .88rem;
+  }
+
+  .hero {
+    padding: 6.5rem 1rem 4rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(1.85rem, 9vw, 2.4rem);
+  }
+
+  .meter-card {
+    padding: 1.4rem;
+    border-radius: 22px;
+  }
+
+  .meter-card__star {
+    top: .55rem;
+    right: 1rem;
+    font-size: 1.5rem;
+  }
+
+  .meter-card > strong {
+    font-size: clamp(2.25rem, 13vw, 3.5rem);
+  }
+}
